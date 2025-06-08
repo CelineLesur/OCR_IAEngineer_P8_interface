@@ -3,6 +3,7 @@ import requests
 from PIL import Image
 import io
 import os
+from fastapi import FastAPI
 
 API_URL = "https://webapp-p8-api-awecfjdcg0a3dtgc.francecentral-01.azurewebsites.net/predict"  
 def predict_image(image: Image.Image):
@@ -29,4 +30,9 @@ interface = gr.Interface(
     title="Segmentation Sémantique U-Net",
     description="Ce modèle applique une segmentation sémantique avec U-Net sur les images urbaines."
 )
-interface.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 7860)))
+
+app = FastAPI()
+app = gr.mount_gradio_app(app, interface, path="/")
+
+import uvicorn
+uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
