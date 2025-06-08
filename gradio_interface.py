@@ -4,7 +4,6 @@ from PIL import Image
 import io
 import os
 from fastapi import FastAPI
-import uvicorn
 
 API_URL = "https://webapp-p8-api-awecfjdcg0a3dtgc.francecentral-01.azurewebsites.net/predict"  
 def predict_image(image: Image.Image):
