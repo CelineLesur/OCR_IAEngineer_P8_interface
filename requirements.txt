@@ -1,4 +1,4 @@
-import gradio as gr
-import requests
-from PIL import Image
-import io
+gradio
+requests
+PIL
+io
