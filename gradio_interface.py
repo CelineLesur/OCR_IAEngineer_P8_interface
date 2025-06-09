@@ -38,7 +38,8 @@ def predict_image(image: Image.Image):
 interface = gr.Interface(
     fn=predict_image,
     inputs=gr.Image(type="pil", label="Télécharge une image"),
-    outputs=gr.Image(type="pil", label="Image segmentée"),
+    outputs=gr.Textbox(label="Sortie debug"), #debug
+    # outputs=gr.Image(type="pil", label="Image segmentée"),
     allow_flagging="never",
     title="Segmentation Sémantique U-Net",
     description="Ce modèle applique une segmentation sémantique avec U-Net sur les images urbaines."
