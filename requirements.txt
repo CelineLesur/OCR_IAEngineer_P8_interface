@@ -1,5 +1,7 @@
-gradio==4.15.0
+gradio==4.43.0
+pydantic-core==2.22.0
+pydantic==2.22.0
+fastapi==0.95.1         # une version stable
+uvicorn==0.23.0         # ou similaire
 requests
 Pillow
-fastapi==0.115.1
-uvicorn[standard]
