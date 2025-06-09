@@ -37,5 +37,10 @@ interface = gr.Interface(
 )
 
 app = FastAPI()
-app = gr.mount_gradio_app(app, interface, path="/")
+
+@app.get("/")
+def root():
+    return {"message": "Gradio mounted at /"}
+
+app = gr.mount_gradio_app(app, interface, path="/gradio")
 
