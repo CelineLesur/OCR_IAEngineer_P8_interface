@@ -5,28 +5,36 @@ import io
 import os
 from fastapi import FastAPI
 
-API_URL = "https://webapp-p8-api-awecfjdcg0a3dtgc.francecentral-01.azurewebsites.net/predict"  
+from fastapi import FastAPI
+import gradio as gr
+from PIL import Image
+import io
+import requests
+
+API_URL = "https://webapp-p8-api-awecfjdcg0a3dtgc.francecentral-01.azurewebsites.net/predict"
+
+app = FastAPI()
+
+# Healthcheck pour éviter l'arrêt automatique
+@app.get("/robots933456.txt")
+def health_check():
+    return "OK"
+
+# Gradio Interface
 def predict_image(image: Image.Image):
     try:
         buffered = io.BytesIO()
         image.save(buffered, format="PNG")
         buffered.seek(0)
-
         files = {'image': ('image.png', buffered, 'image/png')}
-
         response = requests.post(API_URL, files=files)
-
         if response.status_code == 200:
-            result_image = Image.open(io.BytesIO(response.content))
-            return result_image
+            return Image.open(io.BytesIO(response.content))
         else:
-            print(f"Erreur {response.status_code} : {response.text}")
             return f"Erreur {response.status_code} : {response.text}"
     except Exception as e:
-        print(f"Exception dans predict_image: {e}")
         return f"Erreur interne : {e}"
 
-# Interface Gradio
 interface = gr.Interface(
     fn=predict_image,
     inputs=gr.Image(type="pil", label="Télécharge une image"),
@@ -36,11 +44,5 @@ interface = gr.Interface(
     description="Ce modèle applique une segmentation sémantique avec U-Net sur les images urbaines."
 )
 
-app = FastAPI()
-
-@app.get("/")
-def root():
-    return {"message": "Gradio mounted at /"}
-
-app = gr.mount_gradio_app(app, interface, path="/gradio")
-
+# Mount Gradio à la racine
+app = gr.mount_gradio_app(app, interface, path="/")
