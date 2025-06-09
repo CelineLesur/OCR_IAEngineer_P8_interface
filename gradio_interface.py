@@ -29,7 +29,7 @@ def predict_image(image: Image.Image):
 # Interface Gradio
 interface = gr.Interface(
     fn=predict_image,
-    inputs=gr.Image(type="pil", label="Télécharge une image", sources=["upload"]),
+    inputs=gr.Image(type="pil", label="Télécharge une image"),
     outputs=gr.Image(type="pil", label="Image segmentée"),
     allow_flagging="never",
     title="Segmentation Sémantique U-Net",
