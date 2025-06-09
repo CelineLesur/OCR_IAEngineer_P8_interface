@@ -1,6 +1,6 @@
 gradio==4.42.0
 pydantic
-fastapi==0.95.1
+fastapi>=0.100.0
 uvicorn==0.23.0
 requests
 Pillow
