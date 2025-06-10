@@ -52,4 +52,4 @@ interface = gr.Interface(
 )
 
 # Mount Gradio à la racine
-app = gr.mount_gradio_app(app, interface, path="/")
+app = gr.mount_gradio_app(app, interface, path="/gradio")
