@@ -20,20 +20,24 @@ app = FastAPI()
 def health_check():
     return "OK"
 
-# Gradio Interface
+
 def predict_image(image: Image.Image):
-    try:
-        buffered = io.BytesIO()
-        image.save(buffered, format="PNG")
-        buffered.seek(0)
-        files = {'image': ('image.png', buffered, 'image/png')}
-        response = requests.post(API_URL, files=files)
-        if response.status_code == 200:
-            return Image.open(io.BytesIO(response.content))
-        else:
-            return f"Erreur {response.status_code} : {response.text}"
-    except Exception as e:
-        return f"Erreur interne : {e}"
+    return "Image reçue avec succès"
+    
+# Gradio Interface
+# def predict_image(image: Image.Image):
+#     try:
+#         buffered = io.BytesIO()
+#         image.save(buffered, format="PNG")
+#         buffered.seek(0)
+#         files = {'image': ('image.png', buffered, 'image/png')}
+#         response = requests.post(API_URL, files=files)
+#         if response.status_code == 200:
+#             return Image.open(io.BytesIO(response.content))
+#         else:
+#             return f"Erreur {response.status_code} : {response.text}"
+#     except Exception as e:
+#         return f"Erreur interne : {e}"
 
 interface = gr.Interface(
     fn=predict_image,
