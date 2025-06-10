@@ -38,6 +38,8 @@ def predict_image(image: Image.Image):
 #             return f"Erreur {response.status_code} : {response.text}"
 #     except Exception as e:
 #         return f"Erreur interne : {e}"
+print("INPUTS type:", type(gr.Image(type="pil")))
+print("OUTPUTS type:", type(gr.Textbox(label="Sortie debug")))
 
 interface = gr.Interface(
     fn=predict_image,
