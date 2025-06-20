@@ -66,6 +66,7 @@ def predict_image(image_bytes: bytes):
         print(f"Erreur {response.status_code} : {response.text}")
         return Image.new("RGB", (256, 256), color="red")  # image rouge si erreur
 
+download_reference_images()
 # Liste des fichiers
 image_files = sorted(f for f in os.listdir(LOCAL_DIR) if f.endswith("leftImg8bit.png"))
 
