@@ -70,7 +70,7 @@ download_reference_images()
 # Liste des fichiers
 image_files = sorted(f for f in os.listdir(LOCAL_DIR) if f.endswith("leftImg8bit.png"))
 
-with gr.Blocks() as demo:
+with gr.Blocks() as interface:
     gr.Markdown("## Segmentation Sémantique U-Net")
 
     dropdown = gr.Dropdown(choices=image_files, label="Choisir une image")
