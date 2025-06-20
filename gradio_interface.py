@@ -32,9 +32,9 @@ def download_reference_images():
             f.write(blob_client.download_blob().readall())
 
 def show_comparison(selected_image_name):
-    image_path = LOCAL_DIR + f"{selected_image_name}"
-    mask_path = LOCAL_DIR + f"{selected_image_name.replace('leftImg8bit.png', 'gtFine_color.png')}"
-    
+    image_path = os.path.join(LOCAL_DIR, selected_image_name)
+    mask_path = os.path.join(LOCAL_DIR, selected_image_name.replace('leftImg8bit.png', 'gtFine_color.png'))
+
     # Lecture image et masque
     img = Image.open(image_path)
     real_mask = Image.open(mask_path)
