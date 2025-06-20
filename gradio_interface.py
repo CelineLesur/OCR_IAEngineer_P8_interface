@@ -11,7 +11,7 @@ API_URL = "https://webapp-p8-api-awecfjdcg0a3dtgc.francecentral-01.azurewebsites
 AZURE_STORAGE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockaccountp8;AccountKey=flae3B4NIMDm7xc1N3pmP84VgN+zqnM0+HsGw/Y+OqhfomqVLftO9jy4J5r2aIn+eccsB1G8A147+AStRvQ6TA==;EndpointSuffix=core.windows.net"
 CONTAINER_NAME = "projet8"
 # Chemins local
-LOCAL_DIR = "C:/tutorial-env/OCR/Projet8/APIData/"
+LOCAL_DIR = os.path.join(os.getcwd(), "APIData")
 
 app = FastAPI()
 
