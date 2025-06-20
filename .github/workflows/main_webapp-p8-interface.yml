@@ -78,4 +78,6 @@ jobs:
         with:
           app-name: 'WebApp-P8-Interface'
           slot-name: 'Production'
+          clean: true
+          run-from-package: true
           
